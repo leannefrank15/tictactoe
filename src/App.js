@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Board from "./components/Board"
 import "./styles/root.scss"
 import { calculateWinner } from "./helpers"
+import History from "./components/History"
 
 const App = () => {
   const [history, setHistory] = useState([{board : Array(9).fill(null), isXNext : true}]);
@@ -10,18 +11,10 @@ const App = () => {
 
   const current = history[currentMove];
 
-  console.log(history);
-
-  let msg;
+  
   const winner = calculateWinner(current.board);
   
-
-if (winner){
-   msg= `winner is ${winner}!!!`;
-}
-else if(winner == null){
-  msg= `next player is ${current.isXNext ? 'X': 'O'}`;
-}
+  const message = winner ? `winner is ${winner} !!!` : `next player is ${current.isXNext ? 'X' : 'O'}`
 
 
   const handleSquareClick = (position) => {
@@ -49,13 +42,15 @@ else if(winner == null){
 
   }
 
-  
+  const moveTo= (move) => {
+    setCurrentMove(move);
+  }
   return (
     <div className='app'>
       <h1>TIC <span className='header'>TAC</span> TOE</h1>
-      <h2 className='header'>{msg}</h2>
+      <h2 className='header'>{message}</h2>
       <Board board={current.board} handleSquareClick={handleSquareClick} />
-      
+      <History history = {history} moveTo= {moveTo} currentMove={currentMove}/>
     </div>
   )
 }
