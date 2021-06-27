@@ -1,7 +1,5 @@
 link to game : https://tictacgame_1.surge.sh/
 
-<img width="435" alt="game" src="https://user-images.githubusercontent.com/83283144/120906225-37870180-c675-11eb-90a8-f97ebb2bff08.PNG">
-
 # Nano React App Default Javascript Template
 
 The default template project for [nano-react-app](https://github.com/adrianmcli/nano-react-app).
